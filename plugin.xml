@@ -12,8 +12,8 @@
 	<repo>https://github.com/redv1981/cordova.plugins.microvideo.git</repo>
 	<issue>https://github.com/redv1981/cordova.plugins.microvideo/issues</issue>
 
-	<js-module src="www/microvideo.js" name="MicroVideo">
-		<clobbers target="navigator.microvideo" />
+	<js-module src="www/microvideo.js" name="microvideo">
+		<clobbers target="microvideo" />
 	</js-module>
 
 	<!-- android -->
