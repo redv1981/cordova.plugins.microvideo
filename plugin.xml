@@ -13,7 +13,7 @@
 	<issue>https://github.com/redv1981/cordova.plugins.microvideo/issues</issue>
 
 	<js-module src="www/microvideo.js" name="microvideo">
-		<clobbers target="microvideo" />
+		<clobbers target="navigator.microvideo" />
 	</js-module>
 
 	<!-- android -->
