@@ -7,7 +7,7 @@
 	<name>MicroVideo</name>
 	<description>MicroVideo Plugin</description>
 	<author>Drowning fish(redv1981@gmail.com)</author>
-	<keywords>microvideo</keywords>
+	<keywords>video,microvideo</keywords>
 	<license>Apache 2.0</license>
 	<repo>https://github.com/redv1981/cordova.plugins.microvideo.git</repo>
 	<issue>https://github.com/redv1981/cordova.plugins.microvideo/issues</issue>
