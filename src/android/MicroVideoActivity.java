@@ -6,6 +6,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.MotionEvent;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -89,7 +90,9 @@ public class MicroVideoActivity extends Activity implements SurfaceHolder.Callba
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		m_camera = Camera.open();
+		if (0 < Camera.getNumberOfCameras()) {
+			m_camera = Camera.open(0);
+		}
 
 		if (null == m_camera) {
 			finish();
@@ -101,7 +104,25 @@ public class MicroVideoActivity extends Activity implements SurfaceHolder.Callba
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		try {
-			m_camera.setDisplayOrientation(90);
+			int degrees = 0;
+
+			switch (getWindowManager().getDefaultDisplay().getRotation()) {
+				case Surface.ROTATION_0: degrees = 0; break;
+				case Surface.ROTATION_90: degrees = 90; break;
+				case Surface.ROTATION_180: degrees = 180; break;
+				case Surface.ROTATION_270: degrees = 270; break;
+			}
+
+			Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+			Camera.getCameraInfo(0, cameraInfo);
+
+			if (Camera.CameraInfo.CAMERA_FACING_FRONT == cameraInfo.facing) {
+				degrees = (360 - (cameraInfo.orientation + degrees) % 360) % 360;
+			} else {
+				degrees = (cameraInfo.orientation - degrees + 360) % 360;
+			}
+
+			m_camera.setDisplayOrientation(degrees);
 			m_camera.setPreviewDisplay(holder);
 			m_camera.startPreview();
 		} catch (IOException e) {
