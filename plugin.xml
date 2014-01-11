@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	id="cordova.plugins.microvideo"
-	version="0.0.0">
+	version="0.1.0">
 
 	<name>MicroVideo</name>
 	<description>MicroVideo Plugin</description>
@@ -31,7 +31,7 @@
 		</config-file>
 
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-			<activity android:name="cordova.plugins.microvideo.MicroVideoActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+			<activity android:name="cordova.plugins.microvideo.MicroVideoActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 		</config-file>
 
 		<config-file target="res/xml/config.xml" parent="/*">

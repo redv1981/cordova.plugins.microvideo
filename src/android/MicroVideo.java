@@ -1,13 +1,15 @@
 package cordova.plugins.microvideo;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
+import java.util.ArrayList;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 
 public class MicroVideo extends CordovaPlugin {
 
@@ -35,13 +37,11 @@ public class MicroVideo extends CordovaPlugin {
 		switch (resultCode) {
 			case Activity.RESULT_OK:
 				Bundle bundle = intent.getExtras();
-				m_callbackContext.success();
+				ArrayList<String> pathArray = bundle.getStringArrayList("result");
+				m_callbackContext.success(new JSONArray(pathArray));
 				break;
 
 			case Activity.RESULT_CANCELED:
-				m_callbackContext.success();
-				break;
-
 			default:
 				m_callbackContext.success();
 				break;
